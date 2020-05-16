@@ -1,0 +1,209 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+
+{% endblock %}
+<!-- A {{super()}} blokkon belül adthatjuk meg azokat a fájlokat amiket magunk fejlesztettünk, és mindenképpen végrehajtásra kerül
+"!important"--> 
+{% block styles %}
+  
+{{super()}}<
+
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+ <script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContaine",
+    {
+
+      title:{
+      text: "Canvas.js - példaprogram"
+      },
+       data: [
+      {
+        type: "line",
+
+        dataPoints: [
+        { x: new Date(2012, 00, 1), y: 450 },
+        { x: new Date(2012, 01, 1), y: 414 },
+        { x: new Date(2012, 02, 1), y: 520 },
+        { x: new Date(2012, 03, 1), y: 460 },
+        { x: new Date(2012, 04, 1), y: 450 },
+        { x: new Date(2012, 05, 1), y: 500 },
+        { x: new Date(2012, 06, 1), y: 480 },
+        { x: new Date(2012, 07, 1), y: 480 },
+        { x: new Date(2012, 08, 1), y: 410 },
+        { x: new Date(2012, 09, 1), y: 500 },
+        { x: new Date(2012, 10, 1), y: 480 },
+        { x: new Date(2012, 11, 1), y: 510 }
+        ]
+      }
+      ]
+    });
+
+    chart.render();
+  }
+  </script>
+
+<!--<script src="/flask-intro/static/btc.js"></script> -->
+<!--<script src="https://d3js.org/d3.v4.js"></script> -->
+<!--<script src="static/btc.js"></script> -->
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Vizsgamunka 2020</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">
+                                                       <!-- svg logo itt kezdődik -->
+              <svg class="bi bi-bar-chart" width="30" height="30" viewBox=" 0 0 16 16" fill="purple" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5h-2v12h2V2zm-2-1a1 1 0 00-1 1v12a1 1 0 001 1h2a1 1 0 001-1V2a1 1 0 00-1-1h-2zM6 7a1 1 0 011-1h2a1 1 0 011 1v7a1 1 0 01-1 1H7a1 1 0 01-1-1V7zm-5 4a1 1 0 011-1h2a1 1 0 011 1v3a1 1 0 01-1 1H2a1 1 0 01-1-1v-3z" clip-rule="evenodd"/>
+                                                        <!--itt van az oldal menü-->
+
+
+             <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">d3.Js</a></li>
+            <li><a href="#">SVG</a></li>
+            <li><a href="#">CanvasJs</a></li>
+          </ul>
+          
+                                                        <!--Meg itt is van oldal menü-->
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome, {{ name }}</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="static/bitcoin.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Bitcoin</h4>
+              <span class="text-muted">Chart-1</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="static/eth.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Ethereum</h4>
+              <span class="text-muted">chart-2</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="static/iota.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>IOTA</h4>
+              <span class="text-muted">chart-3</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="static/ripple.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Ripple</h4>
+              <span class="text-muted">chart-4</span>
+
+            </div>
+          </div>
+            
+        <h1>BTC Vonal diagramm  D3.js</h1>
+        <div id="my_dataviz"></div>
+
+
+<script>
+
+// margin beálítésok és relatív szélesség és magasság
+var margin = {top: 10, right: 30, bottom: 30, left: 35},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+//  svg objektum hozzáadása és méretezés
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+//adatok beolvasása
+d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
+
+  // csv file beállítása csv, formátum beállítása:
+  function(d){
+    return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+  },
+
+  // adatállomány :
+  function(data) {
+
+    // x-tengelyhez hozzáadott érték
+    var x = d3.scaleTime()
+      .domain(d3.extent(data, function(d) { return d.date; }))
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+    // Y tengely értékein hozzárendelése svg file ban
+    var y = d3.scaleLinear()
+      .domain([0, d3.max(data, function(d) { return +d.value; })])
+      .range([ height, 0 ]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
+
+    // Vonal hozzáadása és meghatározása
+    svg.append("path")
+    //útvonal
+      .datum(data)
+      .attr("fill", "none")
+      //kitöltés
+      .attr("stroke", "purple")
+      .attr("stroke-width", 1.5)
+      //szín és vonalvastagság
+      .attr("d", d3.line()
+        .x(function(d) { return x(d.date) })
+        .y(function(d) { return y(d.value) })
+        )
+
+})
+
+</script>
+
+ 
+          
+          <h2 class="sub-header">importált svg fájl megjelenítése</h2>
+          <div><img src="static/chart.svg"></div>
+          <div id="chartContaine" style="height: 300px; width: 80%;">
+          </div>
+          
+</body>
+</html></div>
+      </div>
+
+    </div>
+{% endblock %}
+© 2020 Pozsgai András-vizsgamunka-openxdesigner@gmail.com
