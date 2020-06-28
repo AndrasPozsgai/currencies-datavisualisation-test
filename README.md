@@ -41,7 +41,7 @@ cd project
       
       $python3 -m venv myenv
       
-# You able choise the Python intrepeter
+# You can choise the Python intrepeter
 
       $virtualenv -p /usr/bin/python2.7 venv       # for 2.x Python version
       
